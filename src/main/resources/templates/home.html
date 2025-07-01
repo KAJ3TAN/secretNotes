@@ -1,0 +1,68 @@
+<!-- odpowiada za główny widok po zalogowaniu-->
+
+
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna - secretNotes</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+
+</head>
+<body>
+
+<header class="main-header">
+    <div class="header-left">
+        <h1>🔐secretNotes</h1>
+    </div>
+    <div class="header-right">
+        <span>Zalogowany jako: <span sec:authentication="name"></span></span>
+        <form th:action="@{/logout}" method="post" class="logout-form">
+            <button type="submit" class="logout-button">Wyloguj</button>
+        </form>
+    </div>
+</header>
+
+<div class="container">
+    <div class="note-form">
+        <h2>Dodaj nową notatkę</h2>
+        <form th:action="@{/home/add}" th:object="${newNote}" method="post">
+            <div>
+                <label for="title">Tytuł:</label>
+                <input type="text" id="title" th:field="*{title}" required>
+            </div>
+            <div>
+                <label for="content">Treść:</label>
+                <textarea id="content" th:field="*{content}" required></textarea>
+            </div>
+            <div>
+                <button type="submit">Dodaj notatkę</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="notes-list">
+        <h2>Twoje notatki</h2>
+        <div th:if="${notes.empty}">
+            <p>Nie masz jeszcze żadnych notatek. Dodaj pierwszą!</p>
+        </div>
+        <div th:each="note : ${notes}" class="note-item">
+            <div class="note-actions">
+                <button class="edit-button">
+                <a th:href="@{/note/edit/{id}(id=${note.id})}" class="edit-button">Edytuj</a>
+                </button>
+                <form th:action="@{/home/delete}" method="post" class="delete-form">
+                    <input type="hidden" name="id" th:value="${note.id}">
+                    <button type="submit" class="delete-button">Usuń</button>
+                </form>
+            </div>
+            <h3><span th:text="${note.title}"></span></h3>
+            <p><span th:text="${note.content}"></span></p>
+            <span class="timestamp" th:text="${#temporals.format(note.createdAt, 'yyyy-MM-dd HH:mm')}"></span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

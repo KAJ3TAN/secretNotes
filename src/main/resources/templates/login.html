@@ -1,0 +1,52 @@
+<!-- odpowiada za formularz logowania-->
+
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Logowanie - secretNotes</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+
+</head>
+
+<body>
+<header class="main-header">
+    <div class="header-left">
+        <h1>🔐secretNotes</h1>
+    </div>
+
+</header>
+<div class="container">
+    <h1>Zaloguj się</h1>
+
+
+    <div th:if="${param.logout}" class="success-message">
+        Zostałeś wylogowany.
+    </div>
+    <div th:if="${param.success}" class="success-message">
+        Rejestracja zakończona sukcesem! Możesz się zalogować.
+    </div>
+
+    <form th:action="@{/login}" method="post" class="auth-form">
+        <div>
+            <label for="username">Nazwa użytkownika:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <span th:if="${param.error}" class="error-message">
+        Błędna nazwa użytkownika lub hasło.
+    </span>
+        <div>
+            <button type="submit">Zaloguj</button>
+        </div>
+    </form>
+
+    <a th:href="@{/register}">Nie masz konta? Zarejestruj się!</a>
+</div>
+
+</body>
+</html>

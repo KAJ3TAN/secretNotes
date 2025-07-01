@@ -1,0 +1,41 @@
+<!-- odpowiada za formularz rejestracji-->
+
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja - secretNotes</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+
+</head>
+<body>
+<header class="main-header">
+    <div class="header-left">
+        <h1>🔐secretNotes</h1>
+    </div>
+
+</header>
+<div class="container">
+    <h1>Zarejestruj się</h1>
+
+    <form th:action="@{/register}" th:object="${user}" method="post" class="auth-form">
+        <div>
+            <label for="username">Nazwa użytkownika:</label>
+            <input type="text" id="username" th:field="*{username}" required>
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-message"></span>
+        </div>
+        <div>
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" th:field="*{password}" required>
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-message"></span>
+        </div>
+        <div>
+            <button type="submit">Zarejestruj</button>
+        </div>
+    </form>
+    <a th:href="@{/login}">Masz już konto? Zaloguj się!</a>
+</div>
+
+</body>
+</html>

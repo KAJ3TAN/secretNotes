@@ -1,0 +1,45 @@
+<!-- formularz umożliwiający zmianę tytułu i treści wybranej notatki oraz
+zapisanie zmian lub powrót do strony głównej bez ich zapisywania.-->
+
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj Notatkę - secretNotes</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+
+</head>
+<body>
+<header class="main-header">
+    <div class="header-left">
+        <h1>🔐secretNotes</h1>
+    </div>
+
+</header>
+<div class="container">
+    <h1>Edytuj notatkę</h1>
+
+    <form th:action="@{/note/edit}" th:object="${note}" method="post" class="note-form">
+        <input type="hidden" th:field="*{id}">
+
+        <div>
+            <label for="title">Tytuł:</label>
+            <input type="text" id="title" th:field="*{title}" required>
+        </div>
+        <div>
+            <label for="content">Treść:</label>
+            <textarea id="content" th:field="*{content}" required></textarea>
+        </div>
+        <div>
+            <button type="submit">Zapisz zmiany</button>
+            <button class="cancel">
+                <a th:href="@{/home}" class="button back-button">Anuluj</a>
+            </button>
+
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
