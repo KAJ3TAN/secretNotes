@@ -1,0 +1,200 @@
+/*Odpowiada za wygląd i układ graficzny całej aplikacji*/
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 40px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.main-header .header-left h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.main-header .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main-header .header-right span {
+    color: #555;
+    font-size: 14px;
+}
+
+.main-header .logout-form {
+    margin: 0;
+}
+
+.main-header .logout-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.main-header .logout-button:hover {
+    background-color: #c82333;
+}
+
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 600px;
+    max-width: 90%;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+body > .container:has(h1:contains("Zaloguj się")),
+body > .container:has(h1:contains("Zarejestruj nowe konto")),
+body > .container:has(h1:contains("Edytuj notatkę")) {
+    width: 400px;
+    margin-top: 20px;
+}
+
+h1 { color: #333; margin-bottom: 20px; }
+p { color: #555; }
+label { display: block; text-align: left; margin-bottom: 5px; color: #555; }
+input[type="text"], input[type="password"], textarea { width: calc(100% - 22px); padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+button { background-color: #9CAF88; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+a { color: #9CAF88; text-decoration: none; margin-top:5px; font-size:14px; }
+.error-message { color: red; margin-top: 5px; margin-bottom: 10px; font-size: 0.9em; text-align: left; }
+.success-message { color: green; margin-top: 10px; margin-bottom: 10px; }
+
+.note-form { text-align: left; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;}
+.note-form label { font-weight: bold; }
+.note-form textarea { min-height: 100px; resize: vertical; }
+.note-form button { background-color: #9CAF88; width: auto; }
+.note-form .cancel { background-color: #dc3545; width: auto; }
+.note-form .cancel:hover { background-color: #dc3545; width: auto; }
+.note-form button:hover { background-color: #8A9D78; }
+.back-button { color: white; }
+.back-button:hover { background-color: #5a6268; }
+
+.notes-list { text-align: left; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;}
+.notes-list h2 { color: #333; margin-bottom: 20px; }
+.note-item { background-color: #f9f9f9; border: 1px solid #eee; border-radius: 6px; padding: 15px; margin-bottom: 15px; position: relative; }
+.note-item h3 { margin-top: 0; margin-bottom: 10px; color: #9CAF88;}
+.note-item p { margin-bottom: 5px; color: #666; white-space: pre-wrap; word-wrap: break-word;}
+.note-item .timestamp { font-size: 0.8em; color: #aaa; margin-top: 10px; display: block;}
+
+.note-actions {
+      position: absolute;
+       top: 10px;
+       right: 10px;
+       display: flex;
+       align-items: center;
+       gap: 10px;
+}
+.note-actions .delete-form {
+    margin: 0;
+}
+.note-actions .edit-button, .note-actions .delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: white;
+}
+
+
+.note-actions .edit-button { background-color: #9CAF88; }
+.note-actions .edit-button:hover { background-color: #9CAF88;; }
+.note-actions .delete-button { background-color: #dc3545; }
+.note-actions .delete-button:hover { background-color: #c82333; }
+
+
+.auth-form {
+    width: 350px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.auth-form h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.auth-form button {
+    background-color: #9CAF88;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.auth-form button:hover {
+    background-color: #8A9D78;
+}
+
+
+
+.auth-form .error-message {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 5px 0 5px 0;
+    color: red;
+    font-size: 0.9em;
+}
